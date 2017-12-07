@@ -1,7 +1,41 @@
 package edu.touro.cs.mco264;
 
 import java.util.LinkedList;
+import java.util.List;
+
 import static edu.touro.cs.mco264.Math.*;
+
+class LSP
+{
+    public static <T>  void printAll(Object[] list) {
+        for (Object o : list) {
+            System.out.println(o);
+        }
+        list[0]= 5;
+    }
+
+    //List is a raw type - not strongly typed. STronglt discoureaged
+    public <T> void printAll(List<T> list)
+    {
+        for(T o: list){
+            System.out.println(o);
+        }
+    }
+
+    public void main(){
+        List<String> list = new LinkedList<>();
+        printAll(list);
+        list.add("");
+
+        String [] list2 = new String[10];
+        printAll(list2);
+
+    }
+
+
+}
+
+
 class Hanoi
 {
     public static void doomsday(int discs, String src, String dest, String tmp){
@@ -47,7 +81,10 @@ public class Main {
     }
     public static void main(String[] args) {
 
-        Hanoi.doomsday(12, "A", "C", "B");
+        EightQueens.main(null);
+//        String [] list2 = new String[10];
+//        LSP.printAll(list2);
+//        Hanoi.doomsday(12, "A", "C", "B");
 
 //        long x = fib(1000);
 //        System.out.println(x);
