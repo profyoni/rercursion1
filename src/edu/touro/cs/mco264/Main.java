@@ -1,5 +1,7 @@
 package edu.touro.cs.mco264;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -66,6 +68,30 @@ class Math
     }
 }
 
+class ZigwigCmp implements Comparator<Zigwig> {
+
+    @Override
+    public int compare(Zigwig o1, Zigwig o2){
+        return  o2.id - o1.id;
+    }
+}
+class Zigwig implements Comparable<Zigwig> {
+    int id;
+    Zigwig(int id){
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Zigwig #[%d]", id);
+    }
+
+    @Override
+    public int compareTo(Zigwig that){
+        return  this.id - that.id;
+    }
+}
+
 public class Main {
 
     static int factorial(int i){
@@ -81,7 +107,29 @@ public class Main {
     }
     public static void main(String[] args) {
 
-        EightQueens.main(null);
+        Zigwig zList[] = new Zigwig[] {
+                new Zigwig(4),
+                new Zigwig(2),
+                new Zigwig(1),
+                new Zigwig(1),
+                new Zigwig(3)};
+
+        for(Zigwig z: zList)
+        {
+            System.out.println(z);
+        }
+
+        Arrays.sort(zList, new ZigwigCmp() ); // utiltiy class like Math static method classes
+        for(Zigwig z: zList)
+        {
+            System.out.println(z);
+        }
+
+
+        //Collections
+
+
+ //       EightQueens.main(null);
 //        String [] list2 = new String[10];
 //        LSP.printAll(list2);
 //        Hanoi.doomsday(12, "A", "C", "B");

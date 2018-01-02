@@ -2,7 +2,7 @@ package edu.touro.cs.mco264;
 
 public class EightQueens {
     //Number of rows or columns
-    public static final int BOARD_SIZE = 12;
+    public static final int BOARD_SIZE = 8;
 
     boolean[][] board;
     //Indicate an empty square
@@ -21,7 +21,7 @@ public class EightQueens {
     public static void main(String[] s) {
         EightQueens main = new EightQueens();
         main.placeQueens(0);
-        main.displayBoard();
+
     }
     public EightQueens() {
         //Constructor creates an empty board
@@ -49,11 +49,14 @@ public class EightQueens {
 
 
     }
+    private int solutionCount;
 
-    public boolean placeQueens (int column) {
+    public void placeQueens (int column) {
 
         if (column >= BOARD_SIZE) {
-            return true;
+            System.out.println(++solutionCount);
+            displayBoard();
+           // return false;
         }
         else {
             boolean queenPlaced = false;
@@ -65,14 +68,14 @@ public class EightQueens {
                 }// end if
                 else{
                     setQueen(row, column);
-                    queenPlaced = placeQueens(column + 1);
+                    placeQueens(column + 1);
                     if (!queenPlaced) {
                         removeQueen(row,column);
                         ++row;
                     }// end if
                 }// end else
             }// end while
-            return queenPlaced;
+          //  return queenPlaced;
         }// end else
     }
 
